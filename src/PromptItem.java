@@ -1,5 +1,3 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
@@ -32,24 +30,15 @@ public class PromptItem {
 
     public String promptDouble() {
         boolean doubleValue = false;
-        boolean notInteger = false;
-        boolean notDouble = false;
         while (!doubleValue) {
             System.out.println("Please enter a double: ");
             String message = Main.input.nextLine();
             try {
-                parseInt(message);
-            } catch (Exception e) {
-                notInteger = true;
-            }
-            try {
                 parseDouble(message);
-            } catch (Exception e) {
-                notDouble = true;
-            }
-            if (notInteger && !notDouble) {
                 doubleValue = true;
-
+            }
+            catch (Exception e) {
+                System.out.println("This is not a double");
             }
         }
         return ("This is a double");
@@ -57,26 +46,15 @@ public class PromptItem {
 
     public String promptInteger() {
         boolean integerValue = false;
-        boolean notInteger = false;
-        boolean notDouble = false;
         while (!integerValue) {
             System.out.println("Please enter an integer: ");
             String message = Main.input.nextLine();
             try {
                 parseInt(message);
-            }
-            catch (Exception e) {
-                notInteger = true;
-            }
-            try {
-                parseDouble(message);
-            }
-            catch (Exception e) {
-                notDouble = true;
-            }
-            if (!notInteger && notDouble) {
                 integerValue = true;
-
+            }
+            catch (Exception e) {
+                System.out.println("This is not an integer");
             }
         }
         return ("This is an integer");
